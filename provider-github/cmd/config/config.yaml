@@ -1,0 +1,12 @@
+---
+config:
+  - name: "foo"
+    file: "foo.go"
+    path: "home/to/path/foo"
+    pattern: "2 * time.Minute"
+    match: "o.PollInterval"
+  - name: "bar"
+    file: "bar.go"
+    path: "home/to/path/bar"
+    pattern: "3 * time.Minute"
+    match: "o.PollInterval"
