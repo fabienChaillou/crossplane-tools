@@ -6,6 +6,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 
@@ -16,22 +17,19 @@ import (
 )
 
 func main() {
-
-	// fmt.Println("DB Config loaded : ", loader.DataConfig)
-
-	for i, config := range loader.DataConfig.Config {
-		fmt.Println(i, config)
-	}
-
-	return
-
 	if len(os.Args) < 2 || os.Args[1] == "" {
 		panic("root directory is required to be given as argument")
 	}
+
 	rootDir := os.Args[1]
 	absRootDir, err := filepath.Abs(rootDir)
 	if err != nil {
 		panic(fmt.Sprintf("cannot calculate the absolute path with %s", rootDir))
 	}
+
+	log.Println("Dir is: ", absRootDir)
+
 	pipeline.Run(config.GetProvider(), absRootDir)
+
+	loader.Run()
 }
